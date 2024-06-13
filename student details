@@ -1,0 +1,31 @@
+def get_student_details():
+  """Gets student details from user input and returns a dictionary."""
+  name = input("Enter student name: ")
+  roll_number = int(input("Enter roll number: "))
+  marks = []
+  num_marks = int(input("Enter number of marks to enter: "))
+  for i in range(num_marks):
+    marks.append(float(input(f"Enter mark {i+1}: ")))
+  return {
+    "name": name,
+    "roll_number": roll_number,
+    "marks": marks
+  }
+
+def print_student_info(student):
+  """Prints student information in a formatted way."""
+  print(f"\nStudent Name: {student['name']}")
+  print(f"Roll Number: {student['roll_number']}")
+  print(f"Marks: {student['marks']}")
+  average_marks = sum(student['marks']) / len(student['marks'])
+  print(f"Average Marks: {average_marks:.2f}")  # Format average to 2 decimal places
+
+students = []
+num_students = int(input("Enter number of students: "))
+
+for i in range(num_students):
+  student = get_student_details()
+  students.append(student)
+
+for student in students:
+  print_student_info(student)
