@@ -1,0 +1,48 @@
+def fuzzy_union(setA, setB):
+    union_set = {}
+    all_elements = set(setA.keys()).union(setB.keys())
+    
+    for x in all_elements:
+        membershipA = setA.get(x, 0)  # Default membership degree is 0 if not in setA
+        membershipB = setB.get(x, 0)  # Default membership degree is 0 if not in setB
+        union_set[x] = max(membershipA, membershipB)
+    
+    return union_set
+
+def fuzzy_intersection(setA, setB):
+    intersection_set = {}
+    common_elements = set(setA.keys()).intersection(setB.keys())
+    
+    for x in common_elements:
+        membershipA = setA[x]
+        membershipB = setB[x]
+        intersection_set[x] = min(membershipA, membershipB)
+    
+    return intersection_set
+
+def fuzzy_difference(setA, setB):
+    difference_set = {}
+    all_elements = set(setA.keys()).union(setB.keys())
+    
+    for x in all_elements:
+        membershipA = setA.get(x, 0)  # Default membership degree is 0 if not in setA
+        membershipB = setB.get(x, 0)  # Default membership degree is 0 if not in setB
+        difference_set[x] = max(membershipA - membershipB, 0)
+    
+    return difference_set
+
+# Example fuzzy sets
+setA = {'a': 7, 'b': 4, 'c': 9}
+setB = {'b': 5, 'c': 6, 'd': 8}
+
+# Calculate union of setA and setB
+union_result = fuzzy_union(setA, setB)
+print("Union of fuzzy sets A and B:", union_result)
+
+# Calculate intersection of setA and setB
+intersection_result = fuzzy_intersection(setA, setB)
+print("Intersection of fuzzy sets A and B:", intersection_result)
+
+# Calculate difference (setA - setB)
+difference_result = fuzzy_difference(setA, setB)
+print("Difference (setA - setB):", difference_result)
