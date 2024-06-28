@@ -1,0 +1,24 @@
+def selection_sort(array):
+  """Sorts an array in ascending order using selection sort algorithm.
+
+  Args:
+      array: The list to be sorted.
+
+  Returns:
+      The sorted list.
+  """
+
+  length = len(array)
+  for i in range(length - 1):
+    min_index = i
+    for j in range(i + 1, length):
+      if array[j] < array[min_index]:
+        min_index = j
+    array[i], array[min_index] = array[min_index], array[i]
+
+  return array
+
+# Example usage
+data = [21, 6, 9, 33, 3]
+sorted_data = selection_sort(data)
+print("The sorted array is:", sorted_data)
