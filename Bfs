@@ -1,0 +1,36 @@
+from collections import deque
+
+def bfs(graph, start):
+  """
+  Performs BFS traversal on a graph starting from a specific node.
+
+  Args:
+      graph: A dictionary representing the graph. Keys are nodes, values are lists of neighboring nodes.
+      start: The starting node for the traversal.
+
+  Returns:
+      A list containing the nodes visited in BFS order.
+  """
+  visited = set()  # Set to keep track of visited nodes
+  queue = deque([start])  # Queue to store nodes to be explored
+
+  while queue:
+    node = queue.popleft()  # Dequeue the first node
+    visited.add(node)  # Mark the current node as visited
+    print(node, end=" ")  # Print the current node (you can modify this to store the nodes)
+
+    for neighbor in graph[node]:  # Iterate through neighbors
+      if neighbor not in visited:
+        queue.append(neighbor)  # Enqueue unvisited neighbors
+
+# Example usage
+graph = {
+  'A': ['B', 'C'],
+  'B': ['D', 'E'],
+  'C': ['F'],
+  'D': [],
+  'E': ['F'],
+  'F': []
+}
+
+bfs(graph, 'A')  # Output: A B C D E F
