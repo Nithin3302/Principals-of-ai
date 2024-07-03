@@ -1,0 +1,69 @@
+import random
+
+# Define a list of responses for the chatbot
+responses = [
+    "Hello! Welcome to our bank. How can I assist you today?",
+    "Hi there! Are you interested in opening a savings account with us?",
+    "Good day! How can I help you with opening a savings account?",
+    "Greetings! Interested in our savings account options?",
+    "Hello! I'm here to guide you through opening a savings account.",
+    "Hi! Do you have any questions about our savings account offerings?",
+    "Welcome! I'm here to assist you in opening a savings account.",
+    "Hello! Interested in the benefits of our savings accounts?",
+    "Hi there! Ready to start the process of opening a savings account?",
+    "Good day! How can I provide information about our savings accounts?"
+]
+
+# Define a list of questions a user might ask
+questions = [
+    "What documents do I need to open a savings account?",
+    "What are the benefits of opening a savings account?",
+    "Can you explain the interest rates on your savings accounts?",
+    "How do I apply for a savings account?",
+    "What is the minimum deposit required?",
+    "Are there any fees associated with your savings accounts?",
+    "Can I open a savings account online?",
+    "Do you offer any special promotions for new accounts?",
+    "What are the different types of savings accounts you offer?",
+    "Can I link my savings account to my checking account?"
+]
+
+# Define responses to the questions
+question_responses = [
+    "To open a savings account, you typically need a valid ID, proof of address, and sometimes an initial deposit.",
+    "Opening a savings account offers benefits such as competitive interest rates, security for your funds, and easy access to your money.",
+    "Our savings accounts offer competitive interest rates. Rates can vary, so it's best to check our website or visit a branch for current rates.",
+    "You can apply for a savings account online through our website or visit any of our branches to apply in person.",
+    "The minimum deposit required depends on the type of savings account you choose. It can be as low as $25 or higher for certain accounts.",
+    "There may be fees associated with maintaining a savings account, such as monthly maintenance fees or fees for exceeding transaction limits. It's important to review our fee schedule.",
+    "Yes, you can open a savings account online through our secure website.",
+    "We often have promotions for new accounts, such as bonus interest rates or cash incentives. Check our website or inquire with a representative for current promotions.",
+    "We offer different types of savings accounts tailored to meet various needs, such as regular savings accounts, high-yield savings accounts, and accounts with specific features.",
+    "Yes, you can link your savings account to your checking account for easy fund transfers and management."
+]
+
+# Function to simulate a conversation with the user
+def savings_account_chat():
+    print("BOT: " + random.choice(responses))  # Bot starts the conversation
+    
+    while True:
+        user_input = input("USER: ").lower()
+        
+        if user_input == "exit":
+            print("BOT: Thank you for considering our bank. Have a great day!")
+            break
+        
+        elif "open" in user_input and "savings" in user_input and "account" in user_input:
+            print("BOT: Sure, I can assist you with that. What specific information do you need?")
+        
+        elif any(q.lower() in user_input for q in questions):
+            index = questions.index(next(q for q in questions if q.lower() in user_input))
+            print(f"BOT: {question_responses[index]}")
+        
+        else:
+            print("BOT: I'm sorry, I didn't understand that. Could you please repeat or ask something else?")
+
+# Main program entry point
+if __name__ == "__main__":
+    print("Welcome to Savings Account Bot!")
+    savings_account_chat()
